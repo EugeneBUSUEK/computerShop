@@ -1,6 +1,5 @@
 package com.hh.computerShop.service;
 
-import com.hh.computerShop.model.request.ProductRequest;
 import com.hh.computerShop.model.enums.ProductType;
 import com.hh.computerShop.persist.db.h2.entity.ProductEntity;
 

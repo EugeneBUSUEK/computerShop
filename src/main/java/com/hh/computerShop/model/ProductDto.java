@@ -1,4 +1,4 @@
-package com.hh.computerShop.model.request;
+package com.hh.computerShop.model;
 
 import com.hh.computerShop.model.enums.ProductType;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductRequest {
+public class ProductDto {
     private Long id;
     private String serialNumber;
     private String producer;

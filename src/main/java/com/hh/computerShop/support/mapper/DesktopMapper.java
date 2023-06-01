@@ -40,4 +40,16 @@ public class DesktopMapper {
     public static void attachDesktopDetailFromDesktopDetailEntity(DesktopResponse desktopResponse, DesktopDetailEntity desktopDetailEntity) {
         desktopResponse.setFormFactor(desktopDetailEntity.getFormFactor());
     }
+
+    public static void updateDesktopEntityByDesktopRequest(ProductEntity productEntityForUpdate, DesktopRequest desktopRequest) {
+        productEntityForUpdate.setSerialNumber(desktopRequest.getSerialNumber() != null ? desktopRequest.getSerialNumber() : productEntityForUpdate.getSerialNumber());
+        productEntityForUpdate.setProducer(desktopRequest.getProducer() != null ? desktopRequest.getProducer() : productEntityForUpdate.getProducer());
+        productEntityForUpdate.setPrice(desktopRequest.getPrice() != null ? desktopRequest.getPrice() : productEntityForUpdate.getPrice());
+        productEntityForUpdate.setQuantity(desktopRequest.getQuantity() != null ? desktopRequest.getQuantity() : productEntityForUpdate.getQuantity());
+        productEntityForUpdate.setProductType(desktopRequest.getProductType() != null ? desktopRequest.getProductType() : productEntityForUpdate.getProductType());
+    }
+
+    public static void updateDesktopDetailEntityByDesktopRequest(DesktopDetailEntity desktopDetailEntityForUpdate, DesktopRequest desktopRequest) {
+        desktopDetailEntityForUpdate.setFormFactor(desktopRequest.getFormFactor() != null ? desktopRequest.getFormFactor() : desktopDetailEntityForUpdate.getFormFactor());
+    }
 }
