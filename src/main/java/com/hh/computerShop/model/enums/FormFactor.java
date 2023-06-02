@@ -1,17 +1,17 @@
 package com.hh.computerShop.model.enums;
 
 public enum FormFactor {
-    DESKTOP(1),
-    NETTOP(2),
-    MONOBLOCK(3);
+    DESKTOP("desktop"),
+    NETTOP("nettop"),
+    MONOBLOCK("monoblock");
 
-    private int form;
+    private String form;
 
-    private FormFactor(int form) {
+    private FormFactor(String form) {
         this.form = form;
     }
 
-    public Integer getForm() {
+    public String getForm() {
         return form;
     }
 }

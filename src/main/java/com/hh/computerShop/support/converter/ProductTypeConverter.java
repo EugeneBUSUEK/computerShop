@@ -7,9 +7,9 @@ import jakarta.persistence.Converter;
 import java.util.stream.Stream;
 
 @Converter(autoApply = true)
-public class ProductTypeConverter implements AttributeConverter<ProductType, Integer> {
+public class ProductTypeConverter implements AttributeConverter<ProductType, String> {
     @Override
-    public Integer convertToDatabaseColumn(ProductType productType) {
+    public String convertToDatabaseColumn(ProductType productType) {
         if (productType == null) {
             return null;
         }
@@ -18,7 +18,7 @@ public class ProductTypeConverter implements AttributeConverter<ProductType, Int
     }
 
     @Override
-    public ProductType convertToEntityAttribute(Integer dbData) {
+    public ProductType convertToEntityAttribute(String dbData) {
         if (dbData == null) {
             return null;
         }

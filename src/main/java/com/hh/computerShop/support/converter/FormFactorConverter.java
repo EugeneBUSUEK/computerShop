@@ -1,16 +1,15 @@
 package com.hh.computerShop.support.converter;
 
 import com.hh.computerShop.model.enums.FormFactor;
-import com.hh.computerShop.model.enums.ProductType;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import java.util.stream.Stream;
 
 @Converter(autoApply = true)
-public class FormFactorConverter implements AttributeConverter<FormFactor, Integer> {
+public class FormFactorConverter implements AttributeConverter<FormFactor, String> {
     @Override
-    public Integer convertToDatabaseColumn(FormFactor formFactor) {
+    public String convertToDatabaseColumn(FormFactor formFactor) {
         if (formFactor == null) {
             return null;
         }
@@ -19,7 +18,7 @@ public class FormFactorConverter implements AttributeConverter<FormFactor, Integ
     }
 
     @Override
-    public FormFactor convertToEntityAttribute(Integer dbData) {
+    public FormFactor convertToEntityAttribute(String dbData) {
         if (dbData == null) {
             return null;
         }

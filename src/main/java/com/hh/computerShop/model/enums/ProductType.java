@@ -1,18 +1,18 @@
 package com.hh.computerShop.model.enums;
 
 public enum ProductType {
-    DESKTOP(1),
-    NOTEBOOK(2),
-    MONITOR(3),
-    HDD(4);
+    DESKTOP("desktop"),
+    NOTEBOOK("notebook"),
+    MONITOR("monitor"),
+    HDD("hdd");
 
-    private int type;
+    private String type;
 
-    private ProductType(int type) {
+    private ProductType(String type) {
         this.type = type;
     }
 
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 }

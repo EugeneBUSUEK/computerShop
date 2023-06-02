@@ -1,6 +1,6 @@
 package com.hh.computerShop.service.impl;
 
-import com.hh.computerShop.model.ProductDto;
+import com.hh.computerShop.model.enums.ProductType;
 import com.hh.computerShop.model.request.DesktopRequest;
 import com.hh.computerShop.model.response.DesktopResponse;
 import com.hh.computerShop.persist.db.h2.DesktopDetailRepository;
@@ -9,7 +9,6 @@ import com.hh.computerShop.persist.db.h2.entity.DesktopDetailEntity;
 import com.hh.computerShop.persist.db.h2.entity.ProductEntity;
 import com.hh.computerShop.service.DesktopService;
 import com.hh.computerShop.support.mapper.DesktopMapper;
-import com.hh.computerShop.support.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +19,11 @@ import java.util.Optional;
 public class DesktopServiceImpl implements DesktopService {
     private final ProductRepository productRepository;
     private final DesktopDetailRepository desktopDetailRepository;
-    private final ProductMapper productMapper;
 
     @Override
     public DesktopResponse createDesktop(DesktopRequest desktopRequest) {
+        desktopRequest.setProductType(ProductType.DESKTOP);
+
         ProductEntity productEntity = DesktopMapper.mapDesktopRequestToProductEntity(desktopRequest);
         productEntity = productRepository.save(productEntity);
         DesktopDetailEntity desktopDetailEntity = DesktopMapper.extractDesktopDetailEntityFromDesktopRequest(desktopRequest, productEntity.getId());
@@ -37,8 +37,10 @@ public class DesktopServiceImpl implements DesktopService {
 
     @Override
     public DesktopResponse updateDesktop(DesktopRequest desktopRequest) {
+        desktopRequest.setProductType(ProductType.DESKTOP);
+
         Optional<ProductEntity> product = productRepository.findById(desktopRequest.getId());
-        Optional<DesktopDetailEntity> desktopDetail = desktopDetailRepository.findById(desktopRequest.getId());
+        Optional<DesktopDetailEntity> desktopDetail = desktopDetailRepository.findByProductEntityId(desktopRequest.getId());
 
         if (product.isEmpty()) {
             throw new RuntimeException("product not found");
@@ -56,7 +58,7 @@ public class DesktopServiceImpl implements DesktopService {
 
 
         ProductEntity productEntity = productRepository.save(productEntityForUpdate);
-        DesktopDetailEntity desktopDetailEntity = desktopDetailRepository.save(desktopDetail.get());
+        DesktopDetailEntity desktopDetailEntity = desktopDetailRepository.save(desktopDetailEntityForUpdate);
         DesktopResponse desktopResponse = DesktopMapper.mapProductEntityToDesktopResponse(productEntity);
 
         DesktopMapper.attachDesktopDetailFromDesktopDetailEntity(desktopResponse, desktopDetailEntity);
