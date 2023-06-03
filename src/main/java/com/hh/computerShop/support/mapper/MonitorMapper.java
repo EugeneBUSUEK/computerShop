@@ -41,7 +41,7 @@ public class MonitorMapper {
         monitorResponse.setDiagonalSize(monitorDetailEntity.getDiagonalSize());
     }
 
-    public static void updateDesktopEntityByDesktopRequest(ProductEntity productEntityForUpdate, MonitorRequest monitorRequest) {
+    public static void updateMonitorEntityByMonitorRequest(ProductEntity productEntityForUpdate, MonitorRequest monitorRequest) {
         productEntityForUpdate.setSerialNumber(monitorRequest.getSerialNumber() != null ? monitorRequest.getSerialNumber() : productEntityForUpdate.getSerialNumber());
         productEntityForUpdate.setProducer(monitorRequest.getProducer() != null ? monitorRequest.getProducer() : productEntityForUpdate.getProducer());
         productEntityForUpdate.setPrice(monitorRequest.getPrice() != null ? monitorRequest.getPrice() : productEntityForUpdate.getPrice());
@@ -49,7 +49,7 @@ public class MonitorMapper {
         productEntityForUpdate.setProductType(monitorRequest.getProductType() != null ? monitorRequest.getProductType() : productEntityForUpdate.getProductType());
     }
 
-    public static void updateDesktopDetailEntityByDesktopRequest(MonitorDetailEntity monitorDetailEntityForUpdate, MonitorRequest monitorRequest) {
+    public static void updateMonitorDetailEntityByMonitorRequest(MonitorDetailEntity monitorDetailEntityForUpdate, MonitorRequest monitorRequest) {
         monitorDetailEntityForUpdate.setDiagonalSize(monitorRequest.getDiagonalSize() != null ? monitorRequest.getDiagonalSize() : monitorDetailEntityForUpdate.getDiagonalSize());
     }
 }

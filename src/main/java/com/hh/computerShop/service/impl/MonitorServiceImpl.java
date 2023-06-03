@@ -53,8 +53,8 @@ public class MonitorServiceImpl implements MonitorService {
         ProductEntity productEntityForUpdate = product.get();
         MonitorDetailEntity monitorDetailEntityForUpdate = monitorDetail.get();
 
-        MonitorMapper.updateDesktopEntityByDesktopRequest(productEntityForUpdate, monitorRequest);
-        MonitorMapper.updateDesktopDetailEntityByDesktopRequest(monitorDetailEntityForUpdate, monitorRequest);
+        MonitorMapper.updateMonitorEntityByMonitorRequest(productEntityForUpdate, monitorRequest);
+        MonitorMapper.updateMonitorDetailEntityByMonitorRequest(monitorDetailEntityForUpdate, monitorRequest);
 
 
         ProductEntity productEntity = productRepository.save(productEntityForUpdate);
