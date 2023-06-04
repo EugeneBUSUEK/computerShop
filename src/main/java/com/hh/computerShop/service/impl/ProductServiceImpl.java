@@ -8,6 +8,7 @@ import com.hh.computerShop.persist.db.h2.ProductRepository;
 import com.hh.computerShop.persist.db.h2.entity.DetailEntity;
 import com.hh.computerShop.persist.db.h2.entity.ProductEntity;
 import com.hh.computerShop.service.ProductService;
+import com.hh.computerShop.service.PropertyTypeService;
 import com.hh.computerShop.support.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,14 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
+    private final PropertyTypeService propertyTypeService;
     private final ProductRepository productRepository;
     private final DetailRepository detailRepository;
 
     @Override
     public ProductResponse createProduct(ProductRequest productRequest) {
+        propertyTypeService.identifyEnum(productRequest);
+
         ProductEntity productEntity = new ProductEntity();
 
         ProductMapper.mapProductRequestToProductEntity(productRequest, productEntity, productEntity.getDetails());
@@ -37,11 +41,15 @@ public class ProductServiceImpl implements ProductService {
 
         ProductResponse productResponse = ProductMapper.mapProductEntityToProductResponse(productEntity);
 
+        propertyTypeService.identifyEnum(productResponse);
+
         return productResponse;
     }
 
     @Override
     public ProductResponse updateProduct(ProductRequest productRequest) {
+        propertyTypeService.identifyEnum(productRequest);
+
         Optional<ProductEntity> product = productRepository.findById(productRequest.getId());
 
         if (product.isEmpty()) {
@@ -59,6 +67,8 @@ public class ProductServiceImpl implements ProductService {
 
         detailEntityListForUpdate = (List<DetailEntity>) detailRepository.saveAll(detailEntityListForUpdate);
         ProductResponse productResponse = ProductMapper.mapProductEntityToProductResponse(productEntityForUpdate);
+
+        propertyTypeService.identifyEnum(productResponse);
 
         return productResponse;
     }
