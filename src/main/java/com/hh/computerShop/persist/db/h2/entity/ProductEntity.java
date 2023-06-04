@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Map;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,4 +25,6 @@ public class ProductEntity {
     private Integer price;
     private Integer quantity;
     private ProductType productType;
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "productEntity")
+    private List<DetailEntity> details;
 }

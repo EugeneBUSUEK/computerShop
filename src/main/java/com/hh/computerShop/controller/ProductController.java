@@ -1,6 +1,9 @@
 package com.hh.computerShop.controller;
 
 import com.hh.computerShop.model.enums.ProductType;
+import com.hh.computerShop.model.request.DesktopRequest;
+import com.hh.computerShop.model.request.ProductRequest;
+import com.hh.computerShop.model.response.DesktopResponse;
 import com.hh.computerShop.model.response.ProductResponse;
 import com.hh.computerShop.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +18,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
+
+    @PostMapping()
+    public ResponseEntity<?> creatDesktop(@RequestBody ProductRequest productRequest) {
+        ProductResponse productResponse = productService.createProduct(productRequest);
+
+        return new ResponseEntity<>(productResponse, HttpStatus.CREATED);
+    }
+
+    @PutMapping()
+    public ResponseEntity<?> updateProduct(@RequestBody ProductRequest productRequest) {
+        ProductResponse productResponse = productService.updateProduct(productRequest);
+
+        return new ResponseEntity<>(productResponse, HttpStatus.OK);
+    }
 
     @GetMapping("/{productId}")
     public ResponseEntity<?> getProductById(@PathVariable(name = "productId") Long id) {

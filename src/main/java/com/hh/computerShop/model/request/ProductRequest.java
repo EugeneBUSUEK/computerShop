@@ -1,7 +1,6 @@
-package com.hh.computerShop.model.response;
+package com.hh.computerShop.model.request;
 
 import com.hh.computerShop.model.enums.ProductType;
-import com.hh.computerShop.model.request.DetailRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,12 +12,12 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductResponse {
+public class ProductRequest {
     private Long id;
     private String serialNumber;
     private String producer;
     private Integer price;
     private Integer quantity;
     private ProductType productType;
-    private List<DetailResponse> details;
+    private List<DetailRequest> details;
 }
