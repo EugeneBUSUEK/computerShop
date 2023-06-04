@@ -13,7 +13,6 @@ import com.hh.computerShop.support.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,10 +32,9 @@ public class ProductServiceImpl implements ProductService {
         ProductMapper.mapProductRequestToProductEntity(productRequest, productEntity, productEntity.getDetails());
 
         productEntity = productRepository.save(productEntity);
-
         List<DetailEntity> detailEntityList = ProductMapper.mapDetailRequestListToDetailEntityList(productRequest.getDetails(), productEntity.getId());
-
         detailEntityList = (List<DetailEntity>) detailRepository.saveAll(detailEntityList);
+
         productEntity.setDetails(detailEntityList);
 
         ProductResponse productResponse = ProductMapper.mapProductEntityToProductResponse(productEntity);
@@ -59,8 +57,8 @@ public class ProductServiceImpl implements ProductService {
         ProductEntity productEntityForUpdate = product.get();
 
         ProductMapper.mapProductRequestToProductEntity(productRequest, productEntityForUpdate, productEntityForUpdate.getDetails());
-        productEntityForUpdate = productRepository.save(productEntityForUpdate);
 
+        productEntityForUpdate = productRepository.save(productEntityForUpdate);
         List<DetailEntity> detailEntityListForUpdate = detailRepository.findAllByProductEntityId(productEntityForUpdate.getId());
 
         ProductMapper.updateDetailEntityListByDetailRequestList(productRequest.getDetails(), detailEntityListForUpdate, productEntityForUpdate.getId());
@@ -83,7 +81,6 @@ public class ProductServiceImpl implements ProductService {
 
         ProductEntity productEntity = product.get();
         List<DetailEntity> detailEntityList = detailRepository.findAllByProductEntityId(productEntity.getId());
-
         ProductResponse productResponse = ProductMapper.mapProductEntityToProductResponse(productEntity);
 
         return productResponse;

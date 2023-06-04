@@ -1,7 +1,6 @@
 package com.hh.computerShop.model.response;
 
 import com.hh.computerShop.model.enums.ProductType;
-import com.hh.computerShop.model.request.DetailRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

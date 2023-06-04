@@ -21,8 +21,10 @@ public class PropertyTypeServiceImpl implements PropertyTypeService {
 
         detailRequestList.forEach(detailRequest -> {
             switch (detailRequest.getPropertyType()) {
-                case FORM_FACTOR -> detailRequest.setPropertyValue(FormFactor.valueOf(detailRequest.getPropertyValue().toUpperCase()).getForm());
-                case NOTEBOOK_SIZE -> detailRequest.setPropertyValue(SizeType.valueOf(detailRequest.getPropertyValue().toUpperCase()).getSizeType());
+                case FORM_FACTOR ->
+                        detailRequest.setPropertyValue(FormFactor.valueOf(detailRequest.getPropertyValue().toUpperCase()).getForm());
+                case NOTEBOOK_SIZE ->
+                        detailRequest.setPropertyValue(SizeType.valueOf(detailRequest.getPropertyValue().toUpperCase()).getSizeType());
             }
         });
     }
@@ -33,8 +35,10 @@ public class PropertyTypeServiceImpl implements PropertyTypeService {
 
         detailRequestList.forEach(detailRequest -> {
             switch (detailRequest.getPropertyType()) {
-                case FORM_FACTOR -> detailRequest.setPropertyValue(FormFactor.valueOf(detailRequest.getPropertyValue().toUpperCase()).getForm().toUpperCase());
-                case NOTEBOOK_SIZE -> detailRequest.setPropertyValue(SizeType.valueOf(detailRequest.getPropertyValue().toUpperCase()).getSizeType().toUpperCase());
+                case FORM_FACTOR ->
+                        detailRequest.setPropertyValue(FormFactor.valueOf(detailRequest.getPropertyValue().toUpperCase()).getForm().toUpperCase());
+                case NOTEBOOK_SIZE ->
+                        detailRequest.setPropertyValue(SizeType.valueOf(detailRequest.getPropertyValue().toUpperCase()).getSizeType().toUpperCase());
             }
         });
     }

@@ -1,9 +1,7 @@
 package com.hh.computerShop.controller;
 
 import com.hh.computerShop.model.enums.ProductType;
-import com.hh.computerShop.model.request.DesktopRequest;
 import com.hh.computerShop.model.request.ProductRequest;
-import com.hh.computerShop.model.response.DesktopResponse;
 import com.hh.computerShop.model.response.ProductResponse;
 import com.hh.computerShop.service.ProductService;
 import lombok.RequiredArgsConstructor;

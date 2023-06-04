@@ -7,7 +7,8 @@ import com.hh.computerShop.model.response.ProductResponse;
 import com.hh.computerShop.persist.db.h2.entity.DetailEntity;
 import com.hh.computerShop.persist.db.h2.entity.ProductEntity;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductMapper {
     public static void mapProductRequestToProductEntity(ProductRequest productRequest, ProductEntity productEntity, List<DetailEntity> detailEntityList) {
@@ -43,7 +44,8 @@ public class ProductMapper {
     }
 
     public static void updateDetailEntityListByDetailRequestList(List<DetailRequest> detailRequestList, List<DetailEntity> detailEntityList, Long productId) {
-        LOOP1 : for (int requestListIndex = 0; requestListIndex < detailRequestList.size(); requestListIndex++) {
+        LOOP1:
+        for (int requestListIndex = 0; requestListIndex < detailRequestList.size(); requestListIndex++) {
             boolean isChanged = false;
             for (int entityListIndex = 0; entityListIndex < detailEntityList.size(); entityListIndex++) {
                 if (detailRequestList.get(requestListIndex).getPropertyType().equals(detailEntityList.get(entityListIndex).getPropertyType())) {
