@@ -1,6 +1,5 @@
 package com.hh.computerShop.support.converter;
 
-import com.hh.computerShop.model.enums.FormFactor;
 import com.hh.computerShop.model.enums.PropertyType;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

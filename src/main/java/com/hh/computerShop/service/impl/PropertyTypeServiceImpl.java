@@ -1,7 +1,7 @@
 package com.hh.computerShop.service.impl;
 
-import com.hh.computerShop.model.enums.FormFactor;
-import com.hh.computerShop.model.enums.SizeType;
+import com.hh.computerShop.model.enums.property.FormFactor;
+import com.hh.computerShop.model.enums.property.SizeType;
 import com.hh.computerShop.model.request.DetailRequest;
 import com.hh.computerShop.model.request.ProductRequest;
 import com.hh.computerShop.model.response.DetailResponse;
@@ -22,9 +22,9 @@ public class PropertyTypeServiceImpl implements PropertyTypeService {
         detailRequestList.forEach(detailRequest -> {
             switch (detailRequest.getPropertyType()) {
                 case FORM_FACTOR ->
-                        detailRequest.setPropertyValue(FormFactor.valueOf(detailRequest.getPropertyValue().toUpperCase()).getForm());
+                        detailRequest.setPropertyValue(FormFactor.getFormFactorValue(detailRequest.getPropertyValue()));
                 case NOTEBOOK_SIZE ->
-                        detailRequest.setPropertyValue(SizeType.valueOf(detailRequest.getPropertyValue().toUpperCase()).getSizeType());
+                        detailRequest.setPropertyValue(SizeType.getSizeTypeValue(detailRequest.getPropertyValue()));
             }
         });
     }
@@ -33,12 +33,12 @@ public class PropertyTypeServiceImpl implements PropertyTypeService {
     public void identifyEnum(ProductResponse productResponse) {
         List<DetailResponse> detailRequestList = productResponse.getDetails();
 
-        detailRequestList.forEach(detailRequest -> {
-            switch (detailRequest.getPropertyType()) {
+        detailRequestList.forEach(detailResponse -> {
+            switch (detailResponse.getPropertyType()) {
                 case FORM_FACTOR ->
-                        detailRequest.setPropertyValue(FormFactor.valueOf(detailRequest.getPropertyValue().toUpperCase()).getForm().toUpperCase());
+                        detailResponse.setPropertyValue(FormFactor.getFormFactorName(detailResponse.getPropertyValue()));
                 case NOTEBOOK_SIZE ->
-                        detailRequest.setPropertyValue(SizeType.valueOf(detailRequest.getPropertyValue().toUpperCase()).getSizeType().toUpperCase());
+                        detailResponse.setPropertyValue(SizeType.getSizeTypeName(detailResponse.getPropertyValue()));
             }
         });
     }

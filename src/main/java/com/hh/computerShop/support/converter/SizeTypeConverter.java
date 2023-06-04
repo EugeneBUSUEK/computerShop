@@ -1,6 +1,6 @@
 package com.hh.computerShop.support.converter;
 
-import com.hh.computerShop.model.enums.SizeType;
+import com.hh.computerShop.model.enums.property.SizeType;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
