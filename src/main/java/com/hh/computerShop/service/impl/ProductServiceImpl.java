@@ -7,6 +7,7 @@ import com.hh.computerShop.persist.db.h2.DetailRepository;
 import com.hh.computerShop.persist.db.h2.ProductRepository;
 import com.hh.computerShop.persist.db.h2.entity.DetailEntity;
 import com.hh.computerShop.persist.db.h2.entity.ProductEntity;
+import com.hh.computerShop.persist.error.ProductNotFoundException;
 import com.hh.computerShop.service.ProductService;
 import com.hh.computerShop.service.PropertyTypeService;
 import com.hh.computerShop.support.mapper.ProductMapper;
@@ -51,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
         Optional<ProductEntity> product = productRepository.findById(productRequest.getId());
 
         if (product.isEmpty()) {
-            throw new RuntimeException("product not found");
+            throw new ProductNotFoundException("product with id = " + productRequest.getId() + " not found");
         }
 
         ProductEntity productEntityForUpdate = product.get();
@@ -76,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
         Optional<ProductEntity> product = productRepository.findById(id);
 
         if (product.isEmpty()) {
-            throw new RuntimeException("product not found");
+            throw new ProductNotFoundException("product with id = " + id + " not found");
         }
 
         ProductEntity productEntity = product.get();
@@ -89,6 +90,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductResponse> getAllProductsByProductType(ProductType productType) {
         List<ProductEntity> productEntities = productRepository.findAllByProductType(productType);
+
+        if (productEntities.size() == 0) {
+            throw new ProductNotFoundException("products of " + productType.getType() + " type not found");
+        }
+
         List<ProductResponse> productResponseList = productEntities.stream()
                 .map(ProductMapper::mapProductEntityToProductResponse).toList();
 
