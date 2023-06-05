@@ -2,32 +2,93 @@
 
 ## Contents
 
-* [Installation](#installation)
-* [Docker](#docker)
-* [API overview](#api_overview)
+* [Run in Docker](#run-in-docker)
+* [Run App](#run-app)
+* [API overview](#api-overview)
 
-<a name="installation"><h2>Installation</h2></a> 
+## Run in Docker 
 
-* Run terminal window
+You do need a Docker daemon.
+If you do not have Docker follow this [link](https://www.docker.com/) to download and install it.
+
+* Run terminal window in directory which you want project located in.
 * Clone project using Git:
 
 ```text
 git clone https://github.com/EugeneBUSUEK/computerShop.git
 ```
-* move to `computerShop` directory
+* move to `computerShop` directory(project root directory)
 
 ```text
 cd computerShop
 ```
 
-* To run the application, run the following command in a terminal window (in the computerShop) directory:
+* Compile the code and package it into a jar file
+
+First command
+
+```text
+.\gradlew clean
+```
+
+Second command
+
+```text
+.\gradlew build
+```
+
+* Start the image creation process
+
+```text
+
+```
+
+* Run a new container
+
+```text
+
+```
+
+You can also execute commands below to create container image of the application using the Spring Boot build plugins for Gradle.
+But the build might take a long time because it has to download some container images and the JDK.
+
+Therefore, it is recommended to try an alternative launch method [Run App](#run-app).
+
+* Run terminal window in project root directory
+```text
+./gradlew bootBuildImage --imageName=myorg/myapp
+```
+
+* Then you can run the image in terminal window
+```text
+docker run -p 8081:8081 -t myorg/myapp
+```
+
+## Run App
+
+* Run terminal window in directory which you want project located in.
+* Clone project using Git:
+
+```text
+git clone https://github.com/EugeneBUSUEK/computerShop.git
+```
+* move to `computerShop` directory(project root directory)
+
+```text
+cd computerShop
+```
+
+* To run the application, run the following command in a terminal window (in the computerShop directory):
+
 ```text
 ./gradlew bootRun
 ```
 
-<a name="docker"><h2>Docker</h2></a> 
+If you have any difficulties with launching the application in this way, you can try launching it as [docker container](#run-in-docker).
 
-<a name="api_overview"><h2>API overview</h2></a>
+
+
+## API overview
 
 ### Enums
 
