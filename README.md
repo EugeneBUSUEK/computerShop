@@ -8,6 +8,23 @@
 
 <a name="installation"><h2>Installation</h2></a> 
 
+* Run terminal window
+* Clone project using Git:
+
+```text
+git clone https://github.com/EugeneBUSUEK/computerShop.git
+```
+* move to `computerShop` directory
+
+```text
+cd computerShop
+```
+
+* To run the application, run the following command in a terminal window (in the computerShop) directory:
+```text
+./gradlew bootRun
+```
+
 <a name="docker"><h2>Docker</h2></a> 
 
 <a name="api_overview"><h2>API overview</h2></a>
