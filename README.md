@@ -3,7 +3,6 @@
 ## Contents
 
 * [Run in Docker](#run-in-docker)
-* [Run App](#run-app)
 * [API overview](#api-overview)
 
 ## Run in Docker 
@@ -40,19 +39,39 @@ Second command
 * Start the image creation process
 
 ```text
-
+docker build -t computershop:first .
 ```
 
 * Run a new container
 
-```text
 
+
+```text
+docker run -p 8081:8081 -e H2_DB_NAME=compshop -e H2_USERNAME=root -e H2_PASSWORD=roor --name=computershop computershop:first
 ```
+Optionally you can set your own h2 database credentials.
+
+### Credentials
+
+---
+
+`H2_DB_NAME`={your database name}
+
+`H2_USERNAME`={your username}
+
+`H2_PASSWORD`={your password}
+
+### If you want to view the database.
+
+---
+
+While application is running follow link [http://localhost:8081/h2-console/](http://localhost:8081/h2-console/)
+where log in with your [credentials](#credentials).
+
+### If you have any difficulties with launching the application in this way.
 
 You can also execute commands below to create container image of the application using the Spring Boot build plugins for Gradle.
 But the build might take a long time because it has to download some container images and the JDK.
-
-Therefore, it is recommended to try an alternative launch method [Run App](#run-app).
 
 * Run terminal window in project root directory
 ```text
@@ -63,28 +82,6 @@ Therefore, it is recommended to try an alternative launch method [Run App](#run-
 ```text
 docker run -p 8081:8081 -t myorg/myapp
 ```
-
-## Run App
-
-* Run terminal window in directory which you want project located in.
-* Clone project using Git:
-
-```text
-git clone https://github.com/EugeneBUSUEK/computerShop.git
-```
-* move to `computerShop` directory(project root directory)
-
-```text
-cd computerShop
-```
-
-* To run the application, run the following command in a terminal window (in the computerShop directory):
-
-```text
-./gradlew bootRun
-```
-
-If you have any difficulties with launching the application in this way, you can try launching it as [docker container](#run-in-docker).
 
 
 
