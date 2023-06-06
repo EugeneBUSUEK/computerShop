@@ -44,11 +44,10 @@ docker build -t computershop:first .
 
 * Run a new container
 
-
-
 ```text
 docker run -p 8081:8081 -e H2_DB_NAME=compshop -e H2_USERNAME=root -e H2_PASSWORD=roor --name=computershop computershop:first
 ```
+
 Optionally you can set your own h2 database credentials.
 
 ### Credentials
