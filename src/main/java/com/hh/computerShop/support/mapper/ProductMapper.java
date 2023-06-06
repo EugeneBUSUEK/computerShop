@@ -44,6 +44,10 @@ public class ProductMapper {
     }
 
     public static void updateDetailEntityListByDetailRequestList(List<DetailRequest> detailRequestList, List<DetailEntity> detailEntityList, Long productId) {
+        if (detailRequestList == null) {
+            return;
+        }
+
         LOOP1:
         for (int requestListIndex = 0; requestListIndex < detailRequestList.size(); requestListIndex++) {
             boolean isChanged = false;
@@ -67,6 +71,10 @@ public class ProductMapper {
     }
 
     public static List<DetailResponse> mapDetailEntityListToDetailResponseList(List<DetailEntity> detailEntityList) {
+        if (detailEntityList == null) {
+            return null;
+        }
+
         List<DetailResponse> detailResponseList = new ArrayList<>();
 
         detailEntityList.forEach(detailEntity -> {

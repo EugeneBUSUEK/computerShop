@@ -19,6 +19,10 @@ public class PropertyTypeServiceImpl implements PropertyTypeService {
     public void identifyEnum(ProductRequest productRequest) {
         List<DetailRequest> detailRequestList = productRequest.getDetails();
 
+        if (detailRequestList == null) {
+            return;
+        }
+
         detailRequestList.forEach(detailRequest -> {
             switch (detailRequest.getPropertyType()) {
                 case FORM_FACTOR ->
