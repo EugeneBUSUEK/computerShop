@@ -48,12 +48,6 @@ docker build -t computershop:first .
 docker run -p 8081:8081 -e H2_DB_NAME=compshop -e H2_USERNAME=root -e H2_PASSWORD=root --name=computershop computershop:first
 ```
 
-* If you no longer need to work with the application, you can stop the container with the command
-
-```text
-docker stop computershop
-```
-
 Optionally you can set your own h2 database credentials.
 
 ### Credentials
@@ -72,6 +66,12 @@ Optionally you can set your own h2 database credentials.
 
 While application is running follow link [http://localhost:8081/h2-console/](http://localhost:8081/h2-console/)
 where log in with your [credentials](#credentials).
+
+* If you no longer need to work with the application, you can stop the container with the command
+
+```text
+docker stop computershop
+```
 
 ### If you have any difficulties with launching the application in this way.
 
