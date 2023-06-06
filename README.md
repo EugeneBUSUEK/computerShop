@@ -221,6 +221,10 @@ Request body
 
 [ProductRequest](#productrequest) object.
 
+Where:
+
+* `id` field **must** be `null`.
+
 Returns
 
 [ProductResponse](#productresponse) object.
@@ -234,6 +238,11 @@ Returns
 Request body
 
 [ProductRequest](#productrequest) object.
+
+Where:
+
+* `id` is **required**.
+* Fields not for update **must** absent.
 
 Returns
 
