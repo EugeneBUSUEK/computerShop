@@ -1,4 +1,4 @@
-package com.hh.computerShop.controller;
+package com.hh.computerShop.api.controller;
 
 import com.hh.computerShop.model.enums.ProductType;
 import com.hh.computerShop.model.request.ProductRequest;
