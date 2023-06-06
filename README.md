@@ -45,7 +45,7 @@ docker build -t computershop:first .
 * Run a new container
 
 ```text
-docker run -p 8081:8081 -e H2_DB_NAME=compshop -e H2_USERNAME=root -e H2_PASSWORD=roor --name=computershop computershop:first
+docker run -p 8081:8081 -e H2_DB_NAME=compshop -e H2_USERNAME=root -e H2_PASSWORD=root --name=computershop computershop:first
 ```
 
 Optionally you can set your own h2 database credentials.
@@ -79,7 +79,7 @@ But the build might take a long time because it has to download some container i
 
 * Then you can run the image in terminal window
 ```text
-docker run -p 8081:8081 -t myorg/myapp
+docker run -p 8081:8081-e H2_DB_NAME=compshop -e H2_USERNAME=root -e H2_PASSWORD=root --name=computershop -t myorg/myapp
 ```
 
 
